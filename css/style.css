@@ -76,6 +76,10 @@ section {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
+section ul {
+    margin: 2em 2em;
+}
+
 h1, h2 {
     margin-bottom: 1rem;
     color: #444;
@@ -115,7 +119,15 @@ footer {
     bottom: 0;             
     left: 0;               
     z-index: 1000; 
-} 
+}
+
+.hero-section {
+    background-image: url('../images/pizzaHeroImage.png');
+    background-size: cover;
+    background-position: center;
+    height: 300px;
+    
+}
 
 .hero-text {
     color: var(--primary-color);
@@ -127,12 +139,6 @@ footer {
     display: inline-block;
 }
 
-.hero-section {
-    background-image: url('../images/pizzaHeroImage.png');
-    background-size: cover;
-    background-position: center;
-    height: 300px;
-}
 
 .product-image {
     max-width: 250px;
