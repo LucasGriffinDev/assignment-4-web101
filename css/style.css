@@ -110,6 +110,10 @@ footer {
     padding: 1rem 0;
 }
 
+#hero-text {
+    color: var(--primary-color);
+}
+
 .hero-section {
     background-image: url('../images/heroImage.webp');
     background-size: cover;
