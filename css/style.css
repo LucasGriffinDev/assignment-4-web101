@@ -1,7 +1,26 @@
 /* Reset some default styles */
+
+:root {
+    --primary-color: #FF6B6B;   /* A lively red */
+    --secondary-color: #48DBFB; /* Bright sky blue */
+    --tertiary-color: #FFC048;  /* Golden yellow */
+    --light-color: #FED330;     /* Sunshine yellow */
+    --dark-color: #1E272E;      /* Deep ocean blue */
+    --danger-color: #FF4757;    /* Intense red */
+    --success-color: #05C46B;   /* Green like a leaf */
+    --warning-color: #FFD32A;   /* Warning yellow */
+    --info-color: #1B9CFC;      /* Informative blue */
+}
+
+
 body, h1, h2, p, ul, li {
     margin: 0;
     padding: 0;
+}
+
+html {
+    box-sizing: border-box;
+    overflow-y: scroll;
 }
 
 body {
@@ -13,7 +32,7 @@ body {
 }
 
 header {
-    background-color: #333;
+    background-color: var(--secondary-color);
     color: #ffffff;
     padding: 1rem 0;
     text-align: center;
@@ -24,6 +43,9 @@ nav ul {
     display: flex;
     justify-content: center;
     gap: 20px;
+}
+nav ul li {
+    margin: 0.5rem auto;
 }
 
 nav ul li a {
@@ -39,10 +61,14 @@ nav ul li a:hover {
 }
 
 section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
     max-width: 800px;
     color: #555;
-    margin: 2rem 2rem;
-    
+    margin: 2rem auto;
+    padding: 1rem;
     background-color: #ffffff;
     border-radius: 4px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -78,12 +104,34 @@ ul li {
 }
 
 footer {
-    background-color: #333;
+    background-color: var(--secondary-color);
     color: #ffffff;
     text-align: center;
     padding: 1rem 0;
 }
 
+.hero-section {
+    background-image: url('../images/heroImage.webp');
+    background-size: cover;
+    background-position: center;
+    height: 300px;
+}
+
+.product-image {
+    max-width: 250px;
+    width: 100%;
+    height: auto;
+    border: 2px solid var(--light-color);
+    border-radius:  4px;
+    transition: transform 0.3s;
+    display: block;
+
+}
+
+.product-image:hover {
+    transform: scale(1.1);
+
+}
 #active-page {
-    background-color: #555;
+    background-color: var(--info-color);
 }
