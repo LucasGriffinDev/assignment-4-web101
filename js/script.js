@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
     // form validation
-    const registrationForm = document.getElementById('registrationForm');
+    const orderForm = document.getElementById('orderForm');
     const username = document.getElementById('username');
     const password = document.getElementById('password');
     const email = document.getElementById('email');
@@ -41,34 +41,37 @@ document.addEventListener('DOMContentLoaded', function() {
                 break;
         }
     });
-    registrationForm.addEventListener('submit', function(e) {
-        // Array to store all error messages
+    orderForm.addEventListener('submit', function(e) {
         let errors = [];
 
-        // Check if required fields are empty
-        if (username.value.trim() === '') {
-            errors.push('Username is required.');
-        }
-        if (password.value.trim() === '') {
-            errors.push('Password is required.');
-        }
-        if (password.value.trim().length < 8) {
-            errors.push('Password must be at least 8 characters long.');
-        }
-        if (email.value.trim() === '') {
-            errors.push('Email is required.');
-        }
-        if (address.value.trim() === '') {
-            errors.push('Address is required.');
-        }
-        if (!termsCheckbox.checked) {
-            errors.push('You must agree to the terms and conditions.');
+        if (deliveryOption.checked) {
+            if (deliveryAddress.value.trim() === '') errors.push('Delivery address is required.');
+            if (contactNumber.value.trim() === '') errors.push('Contact number is required.');
+            if (emailReceipt.value.trim() === '') errors.push('Email for receipt is required.');
         }
 
-        // If there are any errors, prevent form submission and show error messages
+        if (billingAddress.value.trim() === '') errors.push('Billing address is required.');
+
+        if (payOnlineOption.checked) {
+            if (creditCardNumber.value.trim() === '') {
+                errors.push('Credit card number is required.');
+            } else {
+                const length = creditCardNumber.value.trim().length;
+                switch (creditCardType.value) {
+                    case 'Visa':
+                    case 'Mastercard':
+                        if (length !== 16) errors.push('Credit card number must be 16 digits.');
+                        break;
+                    case 'American Express':
+                        if (length !== 15) errors.push('Credit card number must be 15 digits.');
+                        break;
+                }
+            }
+        }
+
         if (errors.length > 0) {
-            e.preventDefault(); // Prevents the form from submitting
-            alert(errors.join('\n')); // Shows all the errors in an alert (you can choose to display them differently if you like)
+            e.preventDefault();
+            alert(errors.join('\n'));
         }
     });
 });
